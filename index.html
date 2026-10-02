@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBT TKA Sejarah SMA</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#244d72 0%,#0b1b2d 45%,#050c15 100%);color:#172033;min-height:100vh;-webkit-user-select:none;user-select:none}
+input,textarea{-webkit-user-select:text;user-select:text}
+
+/* LOGIN */
+#loginPage{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;background:linear-gradient(160deg,#0a3d73 0%,#1565c0 60%,#2f86d6 100%)}
+.page-title{color:#fff;font-size:30px;font-weight:bold;letter-spacing:2px;text-align:center;margin:0 0 24px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.page-footer{color:#fff;font-size:13px;text-align:center;margin-top:24px;opacity:.92}
+.login-box{width:440px;max-width:100%;background:rgba(255,255,255,.97);border-radius:20px;padding:38px;box-shadow:0 25px 70px rgba(0,0,0,.35)}
+.logo-circle{width:82px;height:82px;margin:auto;border-radius:50%;background:linear-gradient(135deg,#0b477d,#c89b35);display:flex;align-items:center;justify-content:center;color:#fff;font-size:27px;font-weight:bold;box-shadow:0 8px 25px rgba(0,0,0,.2)}
+.login-title{text-align:center;margin-top:20px}
+.login-title h1{margin:0;font-size:24px;color:#123e63}
+.login-title p{color:#667085;margin-top:8px}
+.form-group{margin-top:20px}
+.form-group label{display:block;margin-bottom:8px;font-weight:bold}
+.form-group input{width:100%;padding:14px;border:1px solid #ccd3df;border-radius:9px;font-size:15px;outline:none}
+.form-group input:focus{border-color:#0b477d;box-shadow:0 0 0 3px rgba(11,71,125,.1)}
+.login-btn{width:100%;margin-top:25px;padding:14px;border:none;border-radius:9px;background:linear-gradient(135deg,#0b477d,#123e63);color:#fff;font-size:16px;font-weight:bold;cursor:pointer}
+.login-btn:hover{opacity:.9}
+.error{display:none;margin-top:15px;padding:11px;background:#ffe4e4;color:#a00000;border-radius:8px;font-size:14px}
+.rules{margin-top:18px;font-size:12px;color:#667085;line-height:1.6;background:#f6f8fa;border-radius:8px;padding:10px 12px}
+
+/* CBT */
+#cbtPage{display:none;min-height:100vh}
+.topbar{height:72px;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 28px;box-shadow:0 2px 15px rgba(0,0,0,.15);position:sticky;top:0;z-index:100}
+.brand{font-weight:bold;color:#123e63;font-size:18px}
+.brand small{display:block;font-weight:normal;color:#667085;font-size:12px;margin-top:3px}
+.user-info{text-align:right}
+.user-info strong{display:block;font-size:14px}
+.timer{color:#a33d16;font-weight:bold;font-size:14px}
+.main-layout{max-width:1400px;margin:auto;display:grid;grid-template-columns:1fr 300px;gap:20px;padding:25px}
+.question-card{background:#fff;border-radius:16px;padding:30px;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+.question-number{color:#0b477d;font-weight:bold;font-size:18px}
+.question-type{display:inline-block;margin:8px 0 15px;background:#eaf2f8;color:#0b477d;padding:6px 11px;border-radius:20px;font-size:12px;font-weight:bold}
+.material-label{display:inline-block;margin-left:5px;background:#f6efe1;color:#8a651b;padding:6px 11px;border-radius:20px;font-size:12px;font-weight:bold}
+.stimulus{background:#f6f8fa;border-left:5px solid #c49a32;padding:19px;border-radius:8px;line-height:1.7;margin:16px 0 22px}
+.stimulus-title{font-weight:bold;color:#8a651b;margin-bottom:10px}
+.question-text{font-size:17px;line-height:1.6;font-weight:bold;margin-bottom:15px}
+.instruction{background:#fff8e8;border:1px solid #ead6a4;padding:11px;border-radius:8px;font-size:13px;color:#765817;margin-bottom:15px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:15px;margin:10px 0;border:1px solid #d8dee8;border-radius:10px;cursor:pointer;transition:.2s}
+.option:hover{background:#f4f8fc;border-color:#7ba4c8}
+.option input{margin-top:4px;transform:scale(1.25)}
+.option-text{line-height:1.55}
+.table-wrap{overflow-x:auto;margin-top:15px}
+.bs-table{width:100%;border-collapse:collapse}
+.bs-table th,.bs-table td{border:1px solid #ccd3df;padding:12px}
+.bs-table th{background:#edf2f7;text-align:center}
+.bs-table td:first-child{text-align:center;width:50px}
+.bs-choice{text-align:center;width:80px}
+.bs-choice input{transform:scale(1.3)}
+.navigation{display:flex;justify-content:space-between;margin-top:25px;gap:10px}
+.nav-btn{padding:12px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
+.prev{background:#e5e7eb}
+.next{background:#0b477d;color:#fff}
+.finish{background:#b27b18;color:#fff}
+
+/* SIDEBAR */
+.sidebar{background:#fff;border-radius:15px;padding:20px;height:fit-content;position:sticky;top:92px;box-shadow:0 8px 25px rgba(0,0,0,.15)}
+.sidebar h3{margin-top:0;color:#123e63}
+.progress{height:9px;background:#e4e7eb;border-radius:20px;overflow:hidden;margin-bottom:18px}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#0b477d,#c69a35);transition:.3s}
+.number-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.num-btn{border:none;padding:10px 5px;border-radius:7px;background:#e7ebf0;cursor:pointer;font-weight:bold}
+.num-btn.active{background:#0b477d;color:#fff}
+.num-btn.answered{background:#4d8c64;color:#fff}
+.legend{font-size:12px;color:#667085;margin-top:18px;line-height:1.7}
+.legend span{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+
+/* HALAMAN PENUTUP */
+#closePage{display:none;min-height:100vh;padding:40px 20px}
+.result-box{background:#fff;max-width:640px;margin:auto;padding:40px;border-radius:18px;text-align:center;box-shadow:0 15px 45px rgba(0,0,0,.3)}
+.result-box h1{color:#123e63;margin-top:0}
+.close-reason{display:inline-block;background:#eaf2f8;color:#0b477d;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin:6px 0 14px}
+.score{font-size:72px;font-weight:bold;color:#0b477d;margin:10px 0 0}
+.result-detail{margin-top:20px;text-align:left;background:#f6f8fa;padding:20px;border-radius:10px;line-height:1.7}
+.restart-btn{margin-top:25px;padding:13px 25px;border:none;background:#0b477d;color:#fff;border-radius:8px;cursor:pointer}
+
+/* ADMIN */
+#adminPage{display:none;min-height:100vh;padding:25px 15px}
+.admin-box{background:#fff;max-width:1200px;margin:auto;padding:28px;border-radius:16px;box-shadow:0 15px 45px rgba(0,0,0,.3)}
+.admin-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.admin-head h2{margin:0;color:#123e63}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.btn{padding:10px 16px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;color:#fff;background:#0b477d}
+.btn.green{background:#2e7d4f}
+.btn.red{background:#b3261e}
+.btn.gray{background:#6b7280}
+.btn.small{padding:6px 10px;font-size:12px}
+.admin-note{font-size:12px;color:#667085;background:#fff8e8;border:1px solid #ead6a4;border-radius:8px;padding:10px;line-height:1.6}
+.adm-table{width:100%;border-collapse:collapse;font-size:13px}
+.adm-table th,.adm-table td{border:1px solid #ccd3df;padding:9px;text-align:left}
+.adm-table th{background:#edf2f7}
+.badge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:bold}
+.badge.ok{background:#dff3e6;color:#1f6b3d}
+.badge.warn{background:#fdeacc;color:#8a5a00}
+.badge.no{background:#e5e7eb;color:#4b5563}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.main-layout{grid-template-columns:1fr}
+.sidebar{position:static;order:-1}
+}
+@media(max-width:600px){
+.topbar{height:auto;padding:12px;gap:10px}
+.brand{font-size:14px}
+.user-info{font-size:11px}
+.question-card{padding:18px}
+.main-layout{padding:12px}
+.navigation{flex-wrap:wrap}
+.nav-btn{flex:1}
+.page-title{font-size:22px}
+.admin-box{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="loginPage">
+    <h1 class="page-title">TKA MATERI SEJARAH</h1>
+
+    <div class="login-box">
+        <div class="logo-circle">TKA</div>
+
+        <div class="login-title">
+            <h1>Login Peserta</h1>
+            <p>Tes Kemampuan Akademik<br>Latihan Asesmen Sejarah</p>
+        </div>
+
+        <div class="form-group">
+            <label>Username / Nama Peserta</label>
+            <input type="text" id="username" placeholder="Masukkan username" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Masukkan password">
+        </div>
+
+        <button class="login-btn" onclick="login()">LOGIN</button>
+
+        <div id="loginError" class="error"></div>
+
+        <div class="rules">
+            <b>Tata tertib:</b><br>
+            • Waktu mengerjakan 30 menit.<br>
+            • Jangan minimize, pindah aplikasi/tab, atau menutup halaman. Jika dilakukan, tes otomatis diakhiri dan jawaban yang ada langsung disimpan.<br>
+            • Tes hanya dapat dikerjakan satu kali.
+        </div>
+    </div>
+
+    <div class="page-footer">© 2026 Dikembangkan oleh Yanto Supriadi</div>
+</section>
+
+<!-- CBT -->
+<section id="cbtPage">
+<header class="topbar">
+    <div class="brand">CBT TKA SEJARAH<small>SMA / MA / Sederajat</small></div>
+    <div class="user-info">
+        <strong id="participantName"></strong>
+        <span class="timer">Waktu: <span id="timer">30:00</span></span>
+    </div>
+</header>
+
+<div class="main-layout">
+<main class="question-card">
+    <div id="questionContainer"></div>
+
+    <div class="navigation">
+        <button class="nav-btn prev" onclick="previousQuestion()">← Sebelumnya</button>
+        <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()">Berikutnya →</button>
+        <button class="nav-btn finish" id="finishBtn" onclick="finishTest()" style="display:none;">Selesai</button>
+    </div>
+</main>
+
+<aside class="sidebar">
+    <h3>Daftar Soal</h3>
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="numberGrid" class="number-grid"></div>
+
+    <div class="legend">
+        <b>Petunjuk:</b><br><br>
+        <span style="background:#0b477d;"></span>Biru = soal aktif<br>
+        <span style="background:#4d8c64;"></span>Hijau = sudah dijawab<br>
+        <span style="background:#e7ebf0;"></span>Abu-abu = belum dijawab<br><br>
+        <b>Jumlah soal:</b> 10<br>
+        <b>MCMA:</b> 5 soal<br>
+        <b>Benar/Salah:</b> 4 soal<br>
+        <b>Single Choice:</b> 1 soal<br><br>
+        <b style="color:#a33d16;">Jangan minimize / pindah aplikasi.</b>
+    </div>
+</aside>
+</div>
+</section>
+
+<!-- HALAMAN PENUTUP -->
+<section id="closePage">
+<div class="result-box">
+    <h1>Tes Telah Berakhir</h1>
+    <p id="closeParticipant"></p>
+    <div class="close-reason" id="closeReason"></div>
+    <p>Jawaban Anda telah tersimpan dan akan dinilai oleh guru.</p>
+    <div id="closeScoreWrap" style="display:none;">
+        <div class="score" id="scoreValue">0</div>
+        <p>Nilai Akhir</p>
+        <div class="result-detail" id="resultDetail"></div>
+    </div>
+    <p style="font-size:13px;color:#667085;">Halaman ini akan mencoba menutup otomatis. Jika tidak tertutup, silakan tutup secara manual.</p>
+    <button class="restart-btn" onclick="location.reload()">Kembali ke Login</button>
+</div>
+</section>
+
+<!-- ADMIN -->
+<section id="adminPage">
+<div class="admin-box">
+    <div class="admin-head">
+        <h2>Panel Admin — Hasil Peserta</h2>
+        <button class="btn gray" onclick="location.reload()">Keluar</button>
+    </div>
+
+    <div class="admin-actions">
+        <button class="btn green" onclick="downloadExcel()">⬇ Unduh Hasil (Excel .xlsx)</button>
+        <button class="btn" onclick="renderAdmin()">↻ Muat Ulang</button>
+        <button class="btn red" onclick="resetAll()">Hapus Semua Data</button>
+    </div>
+
+    <div class="admin-note">
+        Data hasil tersimpan di browser perangkat ini (localStorage). Hasil dari peserta yang mengerjakan di perangkat lain tidak muncul di sini.
+    </div>
+
+    <div style="overflow-x:auto;margin-top:16px;">
+        <table class="adm-table">
+            <thead>
+                <tr>
+                    <th>No</th><th>Nama Peserta</th><th>Status</th><th>Nilai</th>
+                    <th>MCMA</th><th>B/S</th><th>Single</th><th>Durasi</th><th>Keterangan</th><th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="adminBody"></tbody>
+        </table>
+    </div>
+</div>
+</section>
+
+<script>
+/* =====================================================
+   PENGATURAN
+===================================================== */
+const DURASI_MENIT = 30;          // waktu mengerjakan
+const TAMPILKAN_NILAI = false;    // true = nilai tampil ke peserta setelah selesai
+const STORAGE_KEY = "cbt_tka_sejarah_hasil_v2";
+
+/* =====================================================
+   DATA LOGIN
+===================================================== */
+const participants = [
+    { username: "IVANDER RIZKY ALVIYANTO", password: "24037336" },
+    { username: "JUNIA MELANDRI", password: "24037723" },
+    { username: "ANANDA AISYAH PUTRI PERDANA KURNIAWAN", password: "24037623" },
+    { username: "Okta Muhamad Yunus", password: "24037396" },
+    { username: "SALSA BILLA LARASAYU", password: "24037529" },
+    { username: "Admin", password: "123456", admin: true }
+];
+
+let currentParticipant = null;
+let testActive = false;
+
+/* =====================================================
+   PENYIMPANAN
+===================================================== */
+function loadAll(){
+    try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch(e){ return {}; }
+}
+function saveAll(data){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+    catch(e){}
+}
+function keyOf(name){ return name.trim().toLowerCase(); }
+
+function saveProgress(){
+    if(!currentParticipant || currentParticipant.admin) return;
+    const all = loadAll();
+    const k = keyOf(currentParticipant.username);
+    if(all[k]){
+        all[k].answers = userAnswers;
+        saveAll(all);
+    }
+}
+
+/* =====================================================
+   LOGIN
+===================================================== */
+function showLoginError(msg){
+    const el = document.getElementById("loginError");
+    el.textContent = msg;
+    el.style.display = "block";
+}
+
+function login(){
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const found = participants.find(p =>
+        p.username.toLowerCase() === username.toLowerCase() && p.password === password
+    );
+
+    if(!found){
+        showLoginError("Username atau password tidak sesuai.");
+        return;
+    }
+
+    currentParticipant = found;
+
+    /* ADMIN */
+    if(found.admin){
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("adminPage").style.display = "block";
+        renderAdmin();
+        return;
+    }
+
+    /* PESERTA */
+    const all = loadAll();
+    const k = keyOf(found.username);
+    const rec = all[k];
+
+    if(rec && rec.status === "selesai"){
+        showLoginError("Anda sudah mengerjakan tes ini. Tes hanya dapat dikerjakan satu kali.");
+        return;
+    }
+
+    if(rec && rec.status === "berlangsung"){
+        /* sesi sebelumnya terputus (halaman ditutup/dimuat ulang) */
+        userAnswers = rec.answers || userAnswers;
+        finalize("Keluar dari halaman / dimuat ulang", found, rec.start, false);
+        showLoginError("Sesi tes Anda sebelumnya terputus sehingga tes telah diakhiri dan jawaban disimpan. Hubungi guru jika perlu mengulang.");
+        document.getElementById("closePage").style.display = "none";
+        document.getElementById("loginPage").style.display = "flex";
+        return;
+    }
+
+    all[k] = {
+        username: found.username,
+        status: "berlangsung",
+        start: Date.now(),
+        answers: userAnswers
+    };
+    saveAll(all);
+
+    try{
+        const el = document.documentElement;
+        if(el.requestFullscreen) el.requestFullscreen().catch(()=>{});
+    }catch(e){}
+
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("cbtPage").style.display = "block";
+    document.getElementById("participantName").textContent = found.username;
+
+    testActive = true;
+    startTimer(all[k].start);
+    renderQuestion();
+    renderNumberGrid();
+}
+
+/* =====================================================
+   DATA SOAL
+===================================================== */
+const questions = [
+
+{
+    number:1, type:"MCMA", material:"Pengantar Ilmu Sejarah",
+    stimulusTitle:"Stimulus — Kritik Sumber Sejarah",
+    stimulus:`
+    <p>Seorang siswa meneliti peristiwa Proklamasi Kemerdekaan Indonesia. Ia menemukan beberapa bahan berikut: teks Proklamasi yang diketik Sayuti Melik pada 17 Agustus 1945, foto pembacaan Proklamasi, buku sejarah yang diterbitkan pada tahun 1980, serta artikel blog yang ditulis pada tahun 2025 berdasarkan beberapa buku.</p>
+    <p>Guru meminta siswa membedakan sumber berdasarkan kedekatannya dengan peristiwa dan fungsi sumber tersebut dalam penelitian sejarah.</p>`,
+    question:"Berdasarkan stimulus tersebut, pernyataan yang tepat adalah ...",
+    options:[
+        "Teks Proklamasi yang berasal dari masa peristiwa dapat digunakan sebagai sumber primer.",
+        "Foto pembacaan Proklamasi merupakan sumber primer karena merupakan rekaman visual dari masa peristiwa.",
+        "Buku sejarah tahun 1980 dapat langsung dianggap lebih akurat daripada semua sumber primer.",
+        "Artikel blog tahun 2025 termasuk sumber sekunder apabila penulis menyusun uraian berdasarkan sumber sebelumnya.",
+        "Sumber primer tidak perlu dikritisi karena dibuat pada masa terjadinya peristiwa."
+    ],
+    answer:[0,1,3]
+},
+
+{
+    number:2, type:"MCMA", material:"Kerajaan Hindu-Buddha",
+    stimulusTitle:"Stimulus — Perubahan Kehidupan Masyarakat",
+    stimulus:`
+    <p>Prasasti-prasasti dari masa kerajaan Hindu-Buddha menunjukkan penggunaan bahasa Sanskerta dan aksara Pallawa pada sejumlah peninggalan awal.</p>
+    <p>Di sisi lain, terdapat bukti aktivitas perdagangan, pembangunan bangunan keagamaan, serta munculnya pusat-pusat kekuasaan di berbagai wilayah Nusantara.</p>
+    <p>Sejarawan tidak hanya menggunakan peninggalan tersebut untuk menentukan nama kerajaan, tetapi juga untuk merekonstruksi perubahan kehidupan politik, ekonomi, dan budaya masyarakat.</p>`,
+    question:"Kesimpulan historis yang dapat didukung oleh stimulus tersebut adalah ...",
+    options:[
+        "Penggunaan aksara dan bahasa tertentu menunjukkan adanya pengaruh budaya India pada sebagian masyarakat Nusantara.",
+        "Peninggalan prasasti dapat digunakan sebagai salah satu sumber untuk merekonstruksi kehidupan politik.",
+        "Seluruh masyarakat Nusantara pada masa itu pasti meninggalkan seluruh kebudayaan lokalnya.",
+        "Aktivitas perdagangan menunjukkan adanya hubungan ekonomi antarkawasan.",
+        "Keberadaan bangunan keagamaan membuktikan bahwa seluruh penduduk Nusantara memiliki keyakinan yang sama."
+    ],
+    answer:[0,1,3]
+},
+
+{
+    number:3, type:"MCMA", material:"Kerajaan Islam",
+    stimulusTitle:"Stimulus — Pelabuhan dan Perkembangan Islam",
+    stimulus:`
+    <p>Pada sekitar abad ke-15 hingga ke-17, sejumlah kota pelabuhan di Nusantara berkembang menjadi pusat perdagangan. Pedagang dari berbagai kawasan Asia berinteraksi dengan masyarakat lokal.</p>
+    <p>Dalam lingkungan tersebut, Islam berkembang melalui jaringan perdagangan, perkawinan, pendidikan, dan hubungan antarkomunitas.</p>
+    <p>Beberapa kerajaan Islam kemudian berkembang di sekitar jalur perdagangan strategis.</p>`,
+    question:"Pernyataan yang paling sesuai dengan informasi tersebut adalah ...",
+    options:[
+        "Jaringan perdagangan dapat menjadi salah satu saluran penyebaran Islam di Nusantara.",
+        "Perkembangan kerajaan Islam berkaitan dengan posisi strategis sejumlah pusat perdagangan.",
+        "Islam hanya dapat berkembang apabila terlebih dahulu terjadi penaklukan militer.",
+        "Interaksi antarpedagang dapat menciptakan ruang pertukaran budaya.",
+        "Perkembangan Islam menyebabkan seluruh tradisi lokal Nusantara hilang secara serentak."
+    ],
+    answer:[0,1,3]
+},
+
+{
+    number:4, type:"MCMA", material:"Perlawanan terhadap Bangsa Eropa",
+    stimulusTitle:"Stimulus Studi Kasus — Perlawanan terhadap VOC",
+    stimulus:`
+    <p>Pada abad ke-17, VOC berusaha mengendalikan perdagangan rempah-rempah di Maluku melalui monopoli dan berbagai kebijakan yang membatasi perdagangan.</p>
+    <p>Di beberapa wilayah, kebijakan tersebut menimbulkan konflik dengan penguasa dan masyarakat setempat.</p>
+    <p>Di Makassar, Kesultanan Gowa di bawah Sultan Hasanuddin menghadapi VOC. Konflik tersebut berakhir dengan Perjanjian Bongaya tahun 1667.</p>
+    <p>Perjanjian tersebut memperkuat posisi VOC dalam perdagangan di kawasan tersebut.</p>`,
+    question:"Analisis sebab-akibat yang paling tepat berdasarkan stimulus adalah ...",
+    options:[
+        "Monopoli perdagangan menjadi salah satu faktor yang memicu konflik antara VOC dan kekuatan lokal.",
+        "Perlawanan Sultan Hasanuddin dapat dipahami dalam konteks mempertahankan kepentingan politik dan perdagangan Gowa.",
+        "Perjanjian Bongaya menunjukkan bahwa VOC tidak memiliki kepentingan ekonomi di kawasan Makassar.",
+        "Konflik tersebut menunjukkan adanya persaingan antara kepentingan perdagangan VOC dan kepentingan kekuatan lokal.",
+        "Semua perlawanan terhadap VOC pada abad ke-17 pasti memiliki tujuan dan strategi yang sama."
+    ],
+    answer:[0,1,3]
+},
+
+{
+    number:5, type:"MCMA", material:"Pergerakan Nasional sampai Proklamasi",
+    stimulusTitle:"Stimulus — Perubahan Strategi Perjuangan",
+    stimulus:`
+    <p>Pada awal abad ke-20 muncul organisasi-organisasi pergerakan nasional dengan corak perjuangan yang semakin beragam. Pendidikan, pers, organisasi sosial, politik, dan pembentukan kesadaran kebangsaan menjadi sarana penting.</p>
+    <p>Pada masa pendudukan Jepang, sebagian tokoh Indonesia memanfaatkan organisasi yang dibentuk pemerintah pendudukan untuk memperoleh pengalaman politik dan membangun jaringan.</p>
+    <p>Menjelang kekalahan Jepang, terjadi perbedaan pandangan mengenai waktu dan cara memproklamasikan kemerdekaan.</p>`,
+    question:"Kesimpulan yang menunjukkan kemampuan berpikir historis adalah ...",
+    options:[
+        "Perjuangan menuju kemerdekaan mengalami perubahan bentuk dan strategi dari waktu ke waktu.",
+        "Organisasi pergerakan berperan dalam membangun kesadaran politik dan kebangsaan.",
+        "Pendudukan Jepang sepenuhnya menghilangkan pengalaman politik tokoh-tokoh Indonesia.",
+        "Peristiwa Proklamasi perlu dipahami sebagai bagian dari proses panjang sebelum 17 Agustus 1945.",
+        "Perbedaan pandangan menjelang Proklamasi menunjukkan bahwa semua tokoh Indonesia memiliki strategi yang identik."
+    ],
+    answer:[0,1,3]
+},
+
+{
+    number:6, type:"CATEGORY", material:"Revolusi Kemerdekaan",
+    stimulusTitle:"Stimulus — Mempertahankan Kemerdekaan",
+    stimulus:`
+    <p>Setelah Proklamasi 17 Agustus 1945, Republik Indonesia menghadapi berbagai persoalan untuk mempertahankan kemerdekaan.</p>
+    <p>Kedatangan Sekutu dan kembalinya kepentingan Belanda menyebabkan munculnya konflik bersenjata dan perjuangan diplomasi.</p>
+    <p>Perjuangan mempertahankan kemerdekaan berlangsung melalui berbagai bentuk, antara lain pertempuran, diplomasi, pembentukan pemerintahan, serta upaya memperoleh dukungan internasional.</p>`,
+    statements:[
+        "Perjuangan mempertahankan kemerdekaan hanya dilakukan melalui perang bersenjata.",
+        "Diplomasi menjadi salah satu strategi Republik Indonesia dalam mempertahankan kemerdekaan.",
+        "Dukungan internasional menjadi salah satu faktor yang berkaitan dengan perjuangan diplomasi Indonesia.",
+        "Perjuangan setelah Proklamasi menunjukkan adanya kombinasi strategi militer dan diplomatik."
+    ],
+    answer:[false,true,true,true]
+},
+
+{
+    number:7, type:"CATEGORY", material:"Demokrasi Terpimpin",
+    stimulusTitle:"Stimulus — Dekret Presiden 5 Juli 1959",
+    stimulus:`
+    <p>Pada 5 Juli 1959, Presiden Soekarno mengeluarkan Dekret Presiden. Salah satu isi dekret tersebut adalah pembubaran Konstituante dan pemberlakuan kembali UUD 1945.</p>
+    <p>Peristiwa tersebut menjadi titik penting dalam perubahan sistem politik Indonesia dari masa Demokrasi Liberal menuju Demokrasi Terpimpin.</p>`,
+    statements:[
+        "Dekret Presiden 5 Juli 1959 berkaitan dengan berakhirnya masa Demokrasi Liberal.",
+        "Dekret tersebut memberlakukan kembali UUD 1945.",
+        "Dekret Presiden 5 Juli 1959 merupakan peristiwa yang terjadi pada masa Orde Baru.",
+        "Peristiwa tersebut menunjukkan adanya perubahan dalam sistem politik Indonesia."
+    ],
+    answer:[true,true,false,true]
+},
+
+{
+    number:8, type:"CATEGORY", material:"Orde Baru",
+    stimulusTitle:"Stimulus — Stabilitas dan Pembangunan",
+    stimulus:`
+    <p>Pemerintahan Orde Baru menekankan stabilitas politik dan pembangunan ekonomi.</p>
+    <p>Pemerintah menjalankan program pembangunan jangka panjang serta menerapkan kebijakan politik yang kuat dan terpusat.</p>
+    <p>Di sisi lain, kritik terhadap pembatasan kebebasan politik, praktik korupsi, kolusi, dan nepotisme serta persoalan ekonomi semakin menguat pada akhir periode Orde Baru.</p>`,
+    statements:[
+        "Stabilitas politik dan pembangunan menjadi bagian penting dari kebijakan Orde Baru.",
+        "Orde Baru sepenuhnya menghapuskan pembangunan ekonomi sebagai agenda pemerintah.",
+        "Kritik terhadap praktik KKN menjadi salah satu persoalan yang muncul pada akhir Orde Baru.",
+        "Kebijakan politik Orde Baru tidak pernah mendapat kritik dari masyarakat."
+    ],
+    answer:[true,false,true,false]
+},
+
+{
+    number:9, type:"CATEGORY", material:"Reformasi",
+    stimulusTitle:"Stimulus — Krisis 1997–1998",
+    stimulus:`
+    <p>Krisis ekonomi Asia yang berkembang sejak 1997 memberikan dampak besar terhadap Indonesia.</p>
+    <p>Nilai rupiah melemah, kondisi ekonomi memburuk, dan tekanan sosial-politik meningkat.</p>
+    <p>Pada 1998, demonstrasi mahasiswa dan berbagai kelompok masyarakat berkembang di sejumlah daerah.</p>
+    <p>Presiden Soeharto kemudian mengundurkan diri pada 21 Mei 1998. Peristiwa tersebut menjadi salah satu tonggak penting lahirnya era Reformasi.</p>`,
+    statements:[
+        "Krisis ekonomi 1997–1998 memiliki keterkaitan dengan meningkatnya tekanan sosial-politik di Indonesia.",
+        "Presiden Soeharto mengundurkan diri pada 21 Mei 1998.",
+        "Era Reformasi dimulai ketika Indonesia kembali menerapkan sistem pemerintahan kolonial.",
+        "Gerakan mahasiswa menjadi salah satu unsur penting dalam dinamika politik menjelang Reformasi 1998."
+    ],
+    answer:[true,true,false,true]
+},
+
+{
+    number:10, type:"SINGLE", material:"Pengantar Ilmu Sejarah",
+    stimulusTitle:"Stimulus Studi Kasus — Menyusun Interpretasi Sejarah",
+    stimulus:`
+    <p>Seorang siswa menemukan dua sumber tentang sebuah peristiwa sejarah.</p>
+    <p><b>Sumber A</b> merupakan surat pribadi seorang tokoh yang ditulis pada saat peristiwa berlangsung. Surat tersebut menggambarkan pengalaman pribadi penulis.</p>
+    <p><b>Sumber B</b> merupakan buku sejarah yang ditulis beberapa puluh tahun kemudian. Penulis buku membandingkan beberapa arsip, surat, dan kesaksian untuk menyusun penjelasan mengenai peristiwa tersebut.</p>
+    <p>Guru meminta siswa tidak langsung memilih salah satu sumber sebagai "paling benar", tetapi melakukan kritik sumber dan membandingkan informasi dari keduanya.</p>`,
+    question:"Langkah yang paling tepat dilakukan siswa untuk menghasilkan interpretasi sejarah yang bertanggung jawab adalah ...",
+    options:[
+        "Memilih Sumber A karena ditulis oleh pelaku sehingga pasti sepenuhnya benar.",
+        "Memilih Sumber B karena diterbitkan lebih baru sehingga pasti lebih akurat.",
+        "Membandingkan kedua sumber, menilai konteks, asal-usul, isi, serta kemungkinan bias masing-masing sumber.",
+        "Mengabaikan Sumber A karena pengalaman pribadi tidak memiliki nilai sejarah.",
+        "Menggabungkan seluruh informasi kedua sumber tanpa melakukan kritik."
+    ],
+    answer:2
+}
+
+];
+
+/* =====================================================
+   VARIABEL
+===================================================== */
+let currentQuestion = 0;
+
+let userAnswers = questions.map(q => {
+    if(q.type === "MCMA") return [];
+    if(q.type === "CATEGORY") return Array(q.statements.length).fill(null);
+    return null;
+});
+
+let timerInterval;
+let startTime = 0;
+
+/* =====================================================
+   RENDER SOAL
+===================================================== */
+function renderQuestion(){
+    const q = questions[currentQuestion];
+
+    let html = `
+        <div class="question-number">Soal ${q.number} dari ${questions.length}</div>
+        <div>
+            <span class="question-type">${getTypeLabel(q.type)}</span>
+            <span class="material-label">${q.material}</span>
+        </div>
+        <div class="stimulus">
+            <div class="stimulus-title">${q.stimulusTitle}</div>
+            ${q.stimulus}
+        </div>`;
+
+    if(q.question){
+        html += `<div class="question-text">${q.question}</div>`;
+    }
+
+    if(q.type === "MCMA"){
+        html += `<div class="instruction"><b>Petunjuk:</b> Pilih semua jawaban yang benar. Jawaban benar dapat lebih dari satu.</div>`;
+        q.options.forEach((option,index)=>{
+            const checked = userAnswers[currentQuestion].includes(index) ? "checked" : "";
+            html += `
+                <label class="option">
+                    <input type="checkbox" ${checked} onchange="setMCMA(${index},this.checked)">
+                    <span class="option-text"><b>${String.fromCharCode(65+index)}.</b> ${option}</span>
+                </label>`;
+        });
+    }
+    else if(q.type === "CATEGORY"){
+        html += `
+            <div class="instruction"><b>Petunjuk:</b> Berikan tanda centang pada kolom <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan.</div>
+            <div class="table-wrap">
+            <table class="bs-table">
+                <thead><tr><th>No.</th><th>Pernyataan</th><th>Benar</th><th>Salah</th></tr></thead>
+                <tbody>`;
+        q.statements.forEach((statement,index)=>{
+            const value = userAnswers[currentQuestion][index];
+            html += `
+                <tr>
+                    <td>${index+1}</td>
+                    <td>${statement}</td>
+                    <td class="bs-choice"><input type="radio" name="bs_${currentQuestion}_${index}" ${value === true ? "checked" : ""} onchange="setBS(${index},true)"></td>
+                    <td class="bs-choice"><input type="radio" name="bs_${currentQuestion}_${index}" ${value === false ? "checked" : ""} onchange="setBS(${index},false)"></td>
+                </tr>`;
+        });
+        html += `</tbody></table></div>`;
+    }
+    else if(q.type === "SINGLE"){
+        q.options.forEach((option,index)=>{
+            const checked = userAnswers[currentQuestion] === index ? "checked" : "";
+            html += `
+                <label class="option">
+                    <input type="radio" name="singleChoice" ${checked} onchange="setSingle(${index})">
+                    <span class="option-text"><b>${String.fromCharCode(65+index)}.</b> ${option}</span>
+                </label>`;
+        });
+    }
+
+    document.getElementById("questionContainer").innerHTML = html;
+    updateNavigation();
+    updateProgress();
+    updateNumberGrid();
+}
+
+function getTypeLabel(type){
+    if(type === "MCMA") return "MCMA — Pilihan Ganda Kompleks";
+    if(type === "CATEGORY") return "Kategori — Benar / Salah";
+    return "Single Choice — Pilihan Ganda";
+}
+
+/* =====================================================
+   JAWABAN (otomatis tersimpan setiap perubahan)
+===================================================== */
+function setMCMA(index,checked){
+    if(checked){
+        if(!userAnswers[currentQuestion].includes(index)){
+            userAnswers[currentQuestion].push(index);
+        }
+    } else {
+        userAnswers[currentQuestion] = userAnswers[currentQuestion].filter(i => i !== index);
+    }
+    saveProgress();
+    updateNumberGrid();
+}
+
+function setBS(index,value){
+    userAnswers[currentQuestion][index] = value;
+    saveProgress();
+    updateNumberGrid();
+}
+
+function setSingle(index){
+    userAnswers[currentQuestion] = index;
+    saveProgress();
+    updateNumberGrid();
+}
+
+function isAnswered(index){
+    const q = questions[index];
+    if(q.type === "MCMA") return userAnswers[index].length > 0;
+    if(q.type === "CATEGORY") return userAnswers[index].every(v => v !== null);
+    return userAnswers[index] !== null;
+}
+
+/* =====================================================
+   NAVIGASI
+===================================================== */
+function nextQuestion(){
+    if(currentQuestion < questions.length - 1){
+        currentQuestion++;
+        renderQuestion();
+    }
+}
+
+function previousQuestion(){
+    if(currentQuestion > 0){
+        currentQuestion--;
+        renderQuestion();
+    }
+}
+
+function goToQuestion(index){
+    currentQuestion = index;
+    renderQuestion();
+}
+
+function updateNavigation(){
+    document.querySelector(".prev").style.visibility = currentQuestion === 0 ? "hidden" : "visible";
+
+    const next = document.getElementById("nextBtn");
+    const finish = document.getElementById("finishBtn");
+
+    if(currentQuestion === questions.length - 1){
+        next.style.display = "none";
+        finish.style.display = "inline-block";
+    } else {
+        next.style.display = "inline-block";
+        finish.style.display = "none";
+    }
+}
+
+function updateProgress(){
+    const answered = userAnswers.filter((_,index) => isAnswered(index)).length;
+    const percent = (answered / questions.length) * 100;
+    document.getElementById("progressBar").style.width = percent + "%";
+}
+
+function renderNumberGrid(){
+    const grid = document.getElementById("numberGrid");
+    grid.innerHTML = "";
+    questions.forEach((q,index)=>{
+        const btn = document.createElement("button");
+        btn.className = "num-btn";
+        btn.textContent = index + 1;
+        btn.onclick = () => goToQuestion(index);
+        grid.appendChild(btn);
+    });
+    updateNumberGrid();
+}
+
+function updateNumberGrid(){
+    document.querySelectorAll(".num-btn").forEach((btn,index)=>{
+        btn.classList.remove("active");
+        btn.classList.remove("answered");
+        if(index === currentQuestion){
+            btn.classList.add("active");
+        } else if(isAnswered(index)){
+            btn.classList.add("answered");
+        }
+    });
+    updateProgress();
+}
+
+/* =====================================================
+   PENILAIAN
+===================================================== */
+function calculateScore(answers){
+    let correctMCMA = 0, correctBS = 0, correctSingle = 0;
+
+    questions.forEach((q,index)=>{
+        const a = answers[index];
+
+        if(q.type === "MCMA"){
+            const correct = [...q.answer].sort((x,y)=>x-y);
+            const user = [...(a || [])].sort((x,y)=>x-y);
+            if(JSON.stringify(correct) === JSON.stringify(user)) correctMCMA++;
+        }
+
+        if(q.type === "CATEGORY"){
+            q.answer.forEach((v,i)=>{
+                if(a && a[i] === v) correctBS++;
+            });
+        }
+
+        if(q.type === "SINGLE"){
+            if(a === q.answer) correctSingle++;
+        }
+    });
+
+    /* MCMA = 5, Benar/Salah = 16, Single Choice = 1 → 22 unit */
+    const totalUnits = 22;
+    const totalCorrect = correctMCMA + correctBS + correctSingle;
+    const score = Math.round((totalCorrect / totalUnits) * 100);
+
+    return { score, correctMCMA, correctBS, correctSingle, totalCorrect, totalUnits };
+}
+
+/* =====================================================
+   AKHIRI TES (satu pintu untuk semua penyebab)
+===================================================== */
+function finishTest(){
+    const unanswered = userAnswers.filter((_,i) => !isAnswered(i)).length;
+
+    if(unanswered > 0){
+        /* confirm() tidak memicu pelanggaran karena testActive dimatikan sementara */
+        const wasActive = testActive;
+        testActive = false;
+        const ok = confirm("Masih terdapat " + unanswered + " soal yang belum dijawab.\n\nApakah Anda yakin ingin mengakhiri tes?");
+        testActive = wasActive;
+        if(!ok) return;
+    }
+
+    finalize("Selesai (peserta menekan tombol Selesai)");
+}
+
+function finalize(reason, participant, start, showClosePage){
+    const p = participant || currentParticipant;
+    if(!p || p.admin) return;
+
+    testActive = false;
+    clearInterval(timerInterval);
+
+    const all = loadAll();
+    const k = keyOf(p.username);
+    const rec = all[k] || { username: p.username, start: start || Date.now() };
+    if(rec.status === "selesai") return;
+
+    const result = calculateScore(userAnswers);
+
+    rec.username = p.username;
+    rec.status = "selesai";
+    rec.end = Date.now();
+    rec.reason = reason;
+    rec.answers = userAnswers;
+    rec.result = result;
+    all[k] = rec;
+    saveAll(all);
+
+    if(showClosePage === false) return;
+
+    document.getElementById("cbtPage").style.display = "none";
+    document.getElementById("closePage").style.display = "block";
+    document.getElementById("closeParticipant").innerHTML = "<b>Peserta:</b> " + p.username;
+    document.getElementById("closeReason").textContent = reason;
+
+    if(TAMPILKAN_NILAI){
+        document.getElementById("closeScoreWrap").style.display = "block";
+        document.getElementById("scoreValue").textContent = result.score;
+        document.getElementById("resultDetail").innerHTML = `
+            <p><b>MCMA benar penuh:</b> ${result.correctMCMA} dari 5 soal</p>
+            <p><b>Respons Benar/Salah benar:</b> ${result.correctBS} dari 16 pernyataan</p>
+            <p><b>Single Choice benar:</b> ${result.correctSingle} dari 1 soal</p>
+            <hr>
+            <p><b>Total unit benar:</b> ${result.totalCorrect} dari ${result.totalUnits}</p>`;
+    }
+
+    if(document.fullscreenElement && document.exitFullscreen){
+        document.exitFullscreen().catch(()=>{});
+    }
+
+    /* web menutup sendiri (browser hanya mengizinkan jika dibuka lewat skrip/PWA) */
+    setTimeout(()=>{ try{ window.close(); }catch(e){} }, 3000);
+}
+
+/* =====================================================
+   TIMER 30 MENIT (berbasis waktu mulai, tidak bisa di-reset)
+===================================================== */
+function startTimer(start){
+    startTime = start;
+    tick();
+    timerInterval = setInterval(tick, 1000);
+}
+
+function tick(){
+    const remaining = Math.max(0, DURASI_MENIT * 60 - Math.floor((Date.now() - startTime) / 1000));
+
+    const m = String(Math.floor(remaining / 60)).padStart(2,"0");
+    const s = String(remaining % 60).padStart(2,"0");
+    document.getElementById("timer").textContent = m + ":" + s;
+
+    if(remaining <= 0){
+        finalize("Waktu habis — jawaban otomatis tersimpan");
+    }
+}
+
+/* =====================================================
+   ANTI MINIMIZE / PINDAH APLIKASI
+===================================================== */
+document.addEventListener("visibilitychange", ()=>{
+    if(testActive && document.hidden){
+        finalize("Keluar dari halaman (minimize / pindah aplikasi / pindah tab)");
+    }
+});
+
+window.addEventListener("pagehide", ()=>{
+    if(testActive){
+        finalize("Halaman ditutup / dimuat ulang", null, null, false);
+    }
+});
+
+/* cegah klik kanan & salin selama tes */
+document.addEventListener("contextmenu", e => { if(testActive) e.preventDefault(); });
+document.addEventListener("copy", e => { if(testActive) e.preventDefault(); });
+
+/* =====================================================
+   ADMIN
+===================================================== */
+function fmtDate(ts){
+    if(!ts) return "-";
+    return new Date(ts).toLocaleString("id-ID");
+}
+
+function fmtDur(rec){
+    if(!rec || !rec.start || !rec.end) return "-";
+    const sec = Math.round((rec.end - rec.start) / 1000);
+    return Math.floor(sec / 60) + " mnt " + (sec % 60) + " dtk";
+}
+
+function renderAdmin(){
+    const all = loadAll();
+    const body = document.getElementById("adminBody");
+    body.innerHTML = "";
+
+    participants.filter(p => !p.admin).forEach((p,i)=>{
+        const rec = all[keyOf(p.username)];
+        let status = '<span class="badge no">Belum mengerjakan</span>';
+        let nilai = "-", m = "-", b = "-", s = "-", dur = "-", ket = "-";
+
+        if(rec){
+            if(rec.status === "selesai"){
+                status = '<span class="badge ok">Selesai</span>';
+                nilai = rec.result.score;
+                m = rec.result.correctMCMA + "/5";
+                b = rec.result.correctBS + "/16";
+                s = rec.result.correctSingle + "/1";
+                dur = fmtDur(rec);
+                ket = rec.reason || "-";
+            } else {
+                status = '<span class="badge warn">Sedang mengerjakan</span>';
+                ket = "Mulai: " + fmtDate(rec.start);
+            }
+        }
+
+        body.innerHTML += `
+            <tr>
+                <td>${i+1}</td>
+                <td>${p.username}</td>
+                <td>${status}</td>
+                <td><b>${nilai}</b></td>
+                <td>${m}</td><td>${b}</td><td>${s}</td>
+                <td>${dur}</td>
+                <td>${ket}</td>
+                <td>${rec ? `<button class="btn red small" onclick="resetOne('${keyOf(p.username).replace(/'/g,"\\'")}')">Reset</button>` : ""}</td>
+            </tr>`;
+    });
+}
+
+function resetOne(k){
+    if(!confirm("Reset data peserta ini agar dapat mengerjakan ulang?")) return;
+    const all = loadAll();
+    delete all[k];
+    saveAll(all);
+    renderAdmin();
+}
+
+function resetAll(){
+    if(!confirm("Hapus SEMUA data hasil peserta? Tindakan ini tidak dapat dibatalkan.")) return;
+    saveAll({});
+    renderAdmin();
+}
+
+function formatAnswer(q, a){
+    if(q.type === "MCMA"){
+        if(!a || !a.length) return "-";
+        return [...a].sort((x,y)=>x-y).map(i => String.fromCharCode(65+i)).join(",");
+    }
+    if(q.type === "CATEGORY"){
+        if(!a) return "-";
+        return a.map(v => v === true ? "B" : v === false ? "S" : "-").join("/");
+    }
+    return (a === null || a === undefined) ? "-" : String.fromCharCode(65 + a);
+}
+
+/* =====================================================
+   EXPORT EXCEL (.xlsx) — tanpa library eksternal
+===================================================== */
+const CRC_TABLE = (()=>{
+    const t = [];
+    for(let n=0;n<256;n++){
+        let c = n;
+        for(let k=0;k<8;k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        t[n] = c >>> 0;
+    }
+    return t;
+})();
+
+function crc32(b){
+    let c = 0xFFFFFFFF;
+    for(let i=0;i<b.length;i++) c = CRC_TABLE[(c ^ b[i]) & 255] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+}
+
+function makeZip(files){
+    const enc = new TextEncoder();
+    const parts = [], central = [];
+    let offset = 0;
+
+    files.forEach(f=>{
+        const nameB = enc.encode(f.name);
+        const data = enc.encode(f.content);
+        const crc = crc32(data), size = data.length;
+
+        const lh = new DataView(new ArrayBuffer(30));
+        lh.setUint32(0,0x04034b50,true); lh.setUint16(4,20,true); lh.setUint16(6,0x0800,true);
+        lh.setUint16(8,0,true); lh.setUint16(10,0,true); lh.setUint16(12,0x21,true);
+        lh.setUint32(14,crc,true); lh.setUint32(18,size,true); lh.setUint32(22,size,true);
+        lh.setUint16(26,nameB.length,true); lh.setUint16(28,0,true);
+        parts.push(new Uint8Array(lh.buffer), nameB, data);
+
+        const ch = new DataView(new ArrayBuffer(46));
+        ch.setUint32(0,0x02014b50,true); ch.setUint16(4,20,true); ch.setUint16(6,20,true);
+        ch.setUint16(8,0x0800,true); ch.setUint16(10,0,true); ch.setUint16(12,0,true);
+        ch.setUint16(14,0x21,true); ch.setUint32(16,crc,true); ch.setUint32(20,size,true);
+        ch.setUint32(24,size,true); ch.setUint16(28,nameB.length,true);
+        ch.setUint32(42,offset,true);
+        central.push(new Uint8Array(ch.buffer), nameB);
+
+        offset += 30 + nameB.length + size;
+    });
+
+    const cdSize = central.reduce((s,a)=>s + a.length, 0);
+    const end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0,0x06054b50,true);
+    end.setUint16(8,files.length,true); end.setUint16(10,files.length,true);
+    end.setUint32(12,cdSize,true); end.setUint32(16,offset,true);
+
+    return new Blob([...parts, ...central, new Uint8Array(end.buffer)],
+        { type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+}
+
+function xmlEsc(s){
+    return String(s)
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"")
+        .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function colName(n){
+    let s = "";
+    n++;
+    while(n > 0){
+        const r = (n - 1) % 26;
+        s = String.fromCharCode(65 + r) + s;
+        n = Math.floor((n - 1) / 26);
+    }
+    return s;
+}
+
+function buildSheetXml(rows, widths){
+    let x = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+        '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols>';
+
+    widths.forEach((w,i)=>{
+        x += `<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`;
+    });
+
+    x += '</cols><sheetData>';
+
+    rows.forEach((row,ri)=>{
+        x += `<row r="${ri+1}"${ri===0 ? ' ht="45" customHeight="1"' : ''}>`;
+        row.forEach((v,ci)=>{
+            const ref = colName(ci) + (ri + 1);
+            const st = ri === 0 ? ' s="1"' : '';
+            if(v === "" || v === null || v === undefined){
+                if(ri === 0) x += `<c r="${ref}"${st}/>`;
+                return;
+            }
+            if(typeof v === "number"){
+                x += `<c r="${ref}"${st}><v>${v}</v></c>`;
+            } else {
+                x += `<c r="${ref}"${st} t="inlineStr"><is><t xml:space="preserve">${xmlEsc(v)}</t></is></c>`;
+            }
+        });
+        x += '</row>';
+    });
+
+    return x + '</sheetData></worksheet>';
+}
+
+function downloadExcel(){
+    const all = loadAll();
+
+    const head = ["No","Nama Peserta","Status","Nilai","MCMA Benar (dari 5)","Benar/Salah Benar (dari 16)","Single Benar (dari 1)","Total Unit Benar (dari 22)","Waktu Mulai","Waktu Selesai","Durasi","Keterangan"];
+    questions.forEach(q => head.push("Jawaban Soal " + q.number));
+
+    const rows = [head];
+
+    participants.filter(p => !p.admin).forEach((p,i)=>{
+        const rec = all[keyOf(p.username)];
+        const row = [i+1, p.username];
+
+        if(rec && rec.status === "selesai"){
+            row.push("Selesai", rec.result.score, rec.result.correctMCMA, rec.result.correctBS,
+                     rec.result.correctSingle, rec.result.totalCorrect,
+                     fmtDate(rec.start), fmtDate(rec.end), fmtDur(rec), rec.reason || "");
+            questions.forEach((q,qi)=> row.push(formatAnswer(q, rec.answers[qi])));
+        } else {
+            row.push(rec ? "Sedang mengerjakan" : "Belum mengerjakan", "", "", "", "", "",
+                     rec ? fmtDate(rec.start) : "", "", "", "");
+            questions.forEach(()=> row.push(""));
+        }
+        rows.push(row);
+    });
+
+    const widths = [5,42,20,8,14,16,14,16,20,20,16,48];
+    questions.forEach(()=> widths.push(14));
+
+    const files = [
+        { name:"[Content_Types].xml", content:
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+            '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+            '<Default Extension="xml" ContentType="application/xml"/>' +
+            '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>' +
+            '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>' +
+            '<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>' +
+            '</Types>' },
+        { name:"_rels/.rels", content:
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+            '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>' +
+            '</Relationships>' },
+        { name:"xl/workbook.xml", content:
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">' +
+            '<sheets><sheet name="Hasil TKA Sejarah" sheetId="1" r:id="rId1"/></sheets></workbook>' },
+        { name:"xl/_rels/workbook.xml.rels", content:
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+            '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>' +
+            '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' +
+            '</Relationships>' },
+        { name:"xl/styles.xml", content:
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+            '<fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts>' +
+            '<fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF0B477D"/><bgColor indexed="64"/></patternFill></fill></fills>' +
+            '<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>' +
+            '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>' +
+            '<cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>' +
+            '<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf></cellXfs>' +
+            '</styleSheet>' },
+        { name:"xl/worksheets/sheet1.xml", content: buildSheetXml(rows, widths) }
+    ];
+
+    const blob = makeZip(files);
+    const url = URL.createObjectURL(blob);
+
+    const d = new Date();
+    const stamp = d.getFullYear() + String(d.getMonth()+1).padStart(2,"0") + String(d.getDate()).padStart(2,"0");
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "hasil-tka-sejarah-" + stamp + ".xlsx";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(()=> URL.revokeObjectURL(url), 1000);
+}
+
+/* ENTER UNTUK LOGIN */
+document.getElementById("password").addEventListener("keydown", function(e){
+    if(e.key === "Enter") login();
+});
+</script>
+
+</body>
+</html>
